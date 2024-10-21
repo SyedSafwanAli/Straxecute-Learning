@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bootstrap Profile Dropdown with Shadow</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Estelle+Handwriting&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<style>
+    h2 {
+        font-size: 40px;
+        font-weight: 300;
+    }
+
+    .heading {
+        font-weight: 700;
+    }
+
+    .para {
+        font-size: 18px;
+    }
+
+    @media screen and (max-width:800px) {
+        .content-container {
+            padding: 0 1em !important;
+        }
+    }
+</style>
+
+<body>
+    <!-- Navbar Start -->
+    <nav class="navbar navbar-light bg-light">
+        <div class="container-fluid">
+            <!-- Logo -->
+            <a class="navbar-brand" href="./index.html">
+                <img class="logo" src="assets/images/Straxecute-Learning-LOGO.png" alt="Logo">
+            </a>
+
+            <!-- Author Section (Hidden on small screens) -->
+            <div class="d-none d-md-flex col-md-6 align-items-center justify-content-center my-3 mx-auto">
+                <img class="author-img" src="assets/images/welchway_7.png" alt="author">
+                <div>
+                    <h1 class="header-heading">Building a Winning Career</h1>
+                    <p class="header-sub-heading" data-bs-toggle="modal" data-bs-target="#aboutCourseModal">
+                        <i class="fas fa-info-circle" style="color: #811832;" title="More Info"></i>
+                        About This Course
+                    </p>
+                </div>
+            </div>
+
+            <!-- Profile Dropdown (Visible on all screen sizes) -->
+            <div class="dropdown ms-auto">
+                <a class="nav-link dropdown-toggle" href="#" id="profileDropdown" role="button"
+                    data-bs-toggle="dropdown" aria-expanded="false">
+                    <img src="assets/images/profile.jpg" alt="Profile" class="profile-img">
+                </a>
+                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profileDropdown">
+                    <li class="user-info">
+                        <img src="assets/images/profile.jpg" alt="Profile" class="profile-img">
+                        <div>
+                            <div class="name">John Doe</div>
+                            <div class="role">Admin</div>
+                        </div>
+                    </li>
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="file:///C:/Users/DELL/Desktop/techway/Profile.html">
+                            <i class="fas fa-user icon-color"></i> My Profile
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="#">
+                            <i class="fas fa-sign-out-alt icon-color"></i> Log Out
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- Navbar End -->
+    <!-- Modal -->
+    <div class="modal fade" id="aboutCourseModal" tabindex="-1" aria-labelledby="aboutCourseModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered"> <!-- Add modal-dialog-centered here -->
+            <div class="modal-content">
+                <div class="modal-body" style="min-height: 20vh;padding-top: 5%;">
+                    <h3>Welcome to Building a Winning Career</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container col-lg-6 mx-auto my-5 px-3">
+        <div class="d-flex align-items-center">
+            <span
+                style="background-color: var(--secondary-color); border-radius: 50%; width: 65px; height: 65px; display: flex; justify-content: center; align-items: center; margin-right: 10px;">
+                <i class="fa fa-pencil-alt" aria-hidden="true" style="color: #F2F2F2; font-size: 30px;"></i>
+            </span>
+            <h1 class="py-2">Action Plan: Take Control and Set a Goal</h1>
+        </div>
+    </div>
+
+    <div class="container content-container col-lg-6 px-5">
+        <!-- Main Content -->
+
+        <p class="para">The next step in charting a career path is to take your vision statement and set goals that are
+            truly based on your interests and talents, taking into account where you want to go, what you like and
+            dislike about your specific position or field, and what an ideal career would look like. Most importantly,
+            you should think about the “why’s” associated with each of these goals – are they motivated by your passions
+            or something else?</p>
+        <blockquote class="px-3 py-4 my-5"
+            style="border-left: 8px solid #811832; background: #F2F2F2; font-size: 22px;">
+            <h3>Goal Setting 101:</h3>
+            <p class="para">A few things to keep in mind as you begin the process of setting career goals:</p>
+            <ul class="custom-ul">
+                <li><strong>Short-term goals</strong> are completed within a few weeks to a few months.</li>
+                <li><strong>Mid-range goals</strong> are completed over a few months to a year (or two at the most).
+                    They often will have some short-term goals associated with them.</li>
+                <li><strong>Long-term goals</strong> usually take several years to achieve and have both short-term and
+                    mid-range goals associated with them.
+                    Additionally, goals must have the following things associated with them.</li>
+            </ul>
+            <p class="para">Additionally, goals must have the following things associated with them:</p>
+            <ul class="custom-ul">
+                <li><strong>Actions,</strong> which may or may not be the same as your short-term goals. They are the
+                    activities you’ll engage in as you work toward your goal.</li>
+                <li><strong>Checkpoints,</strong> which will help you to know if you’re staying on track. They could
+                    include performance reviews and selfassessments.</li>
+                <li><strong>Achievements,</strong> which are spots along the way that will let you know you’re
+                    succeeding. They could include receiving an award or earning a promotion.</li>
+            </ul>
+        </blockquote>
+
+        <p class="para">Your career development should feature a mix of all these kinds of goals, and include milestones
+            where necessary. Identifying the actions to take to achieve your goals will be a key element. Remember to
+            celebrate the achievements, as they’ll keep you motivated toward achieving that long-term goal.</p>
+
+        <p class="para">On the Game Pages in the Playbook, you’ll have an opportunity to answer some of the questions
+            that should help you begin forming your career goals. Once you have a goal in mind, start thinking about the
+            actions, checkpoints, and achievements you will go through to reach it.</p>
+
+        <p class="para">Identifying the actions to take to achieve your goals will be a key element. Remember to
+            celebrate the achievements, as they’ll keep you motivated toward achieving that long-term goal?</p>
+
+        <blockquote class="px-3 py-4 my-5"
+            style="border-left: 8px solid #811832; background: #F2F2F2; font-size: 22px;">
+            <h3>Example:</h3>
+            <p class="para">Here’s what one strong long-term career goal might look like, as well as some shorter-term
+                actions, checkpoints, and achievements that would be associated with it.
+            </p>
+            <h5><b>Goal:</b></h5>
+            <p>Within the next five years, I want to become a manager within my company’s Program Management Office in San Diego</p>
+
+            <h5><b>Actions:</b></h5>
+            <ul class="custom-ul">
+                <li>Participate in regular mentoring or some job-shadowing on the functions in the office</li>
+                <li>Work with my current boss (and a program manager, if possible) to take on more team and project leadership responsibilities</li>
+                <li>Actively pursue management opportunities – check our Careers</li>
+                <li>Research apartments in the San Diego area, and moving costs</li>
+                
+            </ul>
+            <h5><b>Checkpoints:</b></h5>
+            <ul class="custom-ul">
+                <li>Seek regular feedback from managers who oversee my projects or work</li>
+                <li>Find a leadership coach and set up monthly coaching sessions</li>
+                <li>Prepare for the PgMP Certification test (next January)</li>               
+            </ul>
+
+            <h5><b>Achievements:</b></h5>
+            <ul class="custom-ul">
+                <li>Become PgMP certified</li>
+                <li>Earn a promotion to management within three years (in either the desired position or a similar one)</li>     
+            </ul>
+        </blockquote>
+
+
+
+        <p class="para">Remember, your goals don’t have to look just like this. Just make sure that your goals represent
+            a future vision that the present-day you isn’t yet prepared for, that they account for the skills and
+            experience that you’re missing, and that they clearly state a rough plan for how you can close those gaps
+            and realize your dream. You may not be able to be super specific right now, but you can at least start
+            moving in the right direction.</p>
+
+        <p class="para">One word of caution though… As Jack has said numerous times, don’t ever let your career
+            ambitions overshadow your current performance. It’s great to have goals. We all should have them. They help
+            us focus and they keep us motivated, but when the pursuit of these goals becomes more focused on “your next
+            move” rather than overdelivering in your current role, that is a sure sign that you’re approaching your
+            career development from the wrong perspective.</p>
+
+        <p class="para"></p>On the Game Pages in the Playbook, you’ll have an opportunity to answer some of the
+        questions that should help you begin forming your career goals. Once you have a goal in mind, start thinking
+        about the actions, checkpoints, and achievements you will go through to reach it.</p>
+
+
+        <div class="container mx-auto my-5">
+            <div class="row align-items-center">
+                <div class="col-8 col-lg-8">
+                    <div style="border-bottom: 1px solid #1e1e1e4d; width: 100%;"></div>
+                </div>
+                <div class="col-4 col-lg-4">
+                    <img src="assets/images/Straxecute-Learning-LOGO.png" alt="Welch Way" class="img-fluid">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content End -->
+
+    <div class="container-fluid p-0">
+        <!-- Navigation container with flex layout -->
+        <div class="nav-container desk-footer">
+            <!-- Previous button -->
+            <button class="arrow-btn desk-prev" disabled>← Previous</button>
+
+            <!-- Navigation Tabs -->
+            <ul class="nav nav-tabs" id="deskNavTabs">
+                <li class="nav-item">
+                    <a class="nav-link nav-link-footer" href="./Overview2.html" data-step="0">Overview <i
+                            class="fa-solid fa-check checkmark"></i></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link nav-link-footer active" href="./deep dive.html" data-step="1">Deep Dive <i
+                            class="fa-solid fa-check checkmark"></i></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link nav-link-footer" href="./Action Plan Survey.html" data-step="2">Action Plan:
+                        Survey <i class="fa-solid fa-check checkmark"></i></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link nav-link-footer" href="./Action-Plans-Quick-Win.html" data-step="3">Action Plan:
+                        Quick Wins <i class="fa-solid fa-check checkmark"></i></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link nav-link-footer" href="./Action-Plan-fing-your-area-for-destiny.html"
+                        data-step="4">Action Plan: Find Your Area of Destiny <i
+                            class="fa-solid fa-check checkmark"></i></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link nav-link-footer" href="./Action Plan Take Control and Set a Goal.html"
+                        data-step="5">Action Plan: Take Control and Set a Goal <i
+                            class="fa-solid fa-check checkmark"></i></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link nav-link-footer" href="Action Plan Your Growth Opportunities.html"
+                        data-step="6">Action Plan: Your Growth Opportunities <i
+                            class="fa-solid fa-check checkmark"></i></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link nav-link-footer" href="./Knowladge Check.html" data-step="7">Knowledge Check <i
+                            class="fa-solid fa-check checkmark"></i></a>
+                </li>
+            </ul>
+
+            <!-- Next button -->
+            <button class="arrow-btn desk-next">Next →</button>
+        </div>
+
+        <!-- Mobile and Tablet Footer -->
+        <div class="nav-container mob-footer">
+            <!-- Navigation Tabs -->
+            <ul class="nav nav-tabs" id="mobNavTabs">
+                <li class="nav-item">
+                    <a class="nav-link nav-link-footer" href="./Overview2.html" data-step="0">Overview <i
+                            class="fa-solid fa-check checkmark"></i></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link nav-link-footer active" href="./deep dive.html" data-step="1">Deep Dive <i
+                            class="fa-solid fa-check checkmark"></i></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link nav-link-footer" href="./Action Plan Survey.html" data-step="2">Action Plan:
+                        Survey <i class="fa-solid fa-check checkmark"></i></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link nav-link-footer" href="./Action-Plans-Quick-Win.html" data-step="3">Action Plan:
+                        Quick Wins <i class="fa-solid fa-check checkmark"></i></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link nav-link-footer" href="./Action-Plan-fing-your-area-for-destiny.html"
+                        data-step="4">Action Plan: Find Your Area of Destiny <i
+                            class="fa-solid fa-check checkmark"></i></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link nav-link-footer" href="./Action Plan Take Control and Set a Goal.html"
+                        data-step="5">Action Plan: Take Control and Set a Goal <i
+                            class="fa-solid fa-check checkmark"></i></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link nav-link-footer" href="./Action Plan Your Growth Opportunities.html"
+                        data-step="6">Action Plan: Your Growth Opportunities <i
+                            class="fa-solid fa-check checkmark"></i></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link nav-link-footer" href="./Knowladge Check.html" data-step="7">Knowledge Check <i
+                            class="fa-solid fa-check checkmark"></i></a>
+                </li>
+            </ul>
+
+            <!-- Previous button -->
+            <button class="arrow-btn mob-prev" disabled>← Previous</button>
+            <!-- Next button -->
+            <button class="arrow-btn mob-next">Next →</button>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        const tabsDesktop = document.querySelectorAll('#deskNavTabs .nav-link-footer');
+        const tabsMobile = document.querySelectorAll('#mobNavTabs .nav-link-footer');
+        const prevBtnDesktop = document.querySelector('.desk-prev');
+        const nextBtnDesktop = document.querySelector('.desk-next');
+        const prevBtnMobile = document.querySelector('.mob-prev');
+        const nextBtnMobile = document.querySelector('.mob-next');
+
+        let currentStep = 5;
+
+        // Define an array of URLs corresponding to each step
+        const urls = [
+            "./Overview2.html", // Overview
+            "./deep dive.html", // Deep Dive
+            "./Action Plan Survey.html", // Action Plan: Survey
+            "./Action-Plans-Quick-Win.html", // Action Plan: Quick Wins
+            "./Action-Plan-fing-your-area-for-destiny.html", // Action Plan: Find Your Area of Destiny
+            "./Action Plan Take Control and Set a Goal.html", // Action Plan: Take Control and Set a Goal
+            "./Action Plan Your Growth Opportunities.html", // Action Plan: Your Growth Opportunities
+            "./Knowladge Check.html" // Knowledge Check
+        ];
+
+        function updateTabs(tabs, prevBtn, nextBtn) {
+            tabs.forEach((tab, index) => {
+                tab.classList.toggle('active', index === currentStep);
+            });
+            prevBtn.disabled = currentStep === 0;
+            nextBtn.disabled = currentStep === tabs.length - 1;
+        }
+
+// Event listeners for Desktop
+prevBtnDesktop.addEventListener('click', () => {
+    if (currentStep > 0) {
+        currentStep--;
+        window.location.href = urls[currentStep]; // Redirect to the corresponding URL
+        updateTabs(tabsDesktop, prevBtnDesktop, nextBtnDesktop);
+    }
+});
+
+nextBtnDesktop.addEventListener('click', () => {
+    if (currentStep < tabsDesktop.length - 1) {
+        currentStep++;
+        window.location.href = urls[currentStep]; // Redirect to the corresponding URL
+    }
+});
+
+// Event listeners for Mobile
+prevBtnMobile.addEventListener('click', () => {
+    if (currentStep > 0) {
+        currentStep--;
+        window.location.href = urls[currentStep]; // Redirect to the corresponding URL
+        updateTabs(tabsMobile, prevBtnMobile, nextBtnMobile);
+    }
+});
+
+nextBtnMobile.addEventListener('click', () => {
+    if (currentStep < tabsMobile.length - 1) {
+        currentStep++;
+        window.location.href = urls[currentStep]; // Redirect to the corresponding URL
+    }
+});
+
+
+        // Initial state
+        updateTabs(tabsDesktop, prevBtnDesktop, nextBtnDesktop);
+        updateTabs(tabsMobile, prevBtnMobile, nextBtnMobile);
+    </script>
+</body>
+
+</html>

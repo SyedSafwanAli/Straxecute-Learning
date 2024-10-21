@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Building a Winning Career</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Estelle+Handwriting&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .reply {
+            cursor: pointer;
+            color: var(--secondary-color);
+            font-weight: bold;
+        }
+
+        .icon-reply {
+            margin-right: 5px;
+        }
+
+        .reply-section {
+            margin-top: 10px;
+            margin-left: 50px;
+            display: none;
+            position: relative;
+        }
+
+        .reply-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 5px;
+        }
+
+        .reply-submit {
+            width: max-content;
+            padding: 0px 40px;
+            margin-left: 5px;
+        }
+
+        .comment-author {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 10px;
+        }
+
+        .comment-author img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        .comment-author div {
+            flex-grow: 1;
+        }
+
+        .comment-textarea,
+        .reply-textarea {
+            border: none;
+            /* Remove all borders */
+            border-bottom: 2px solid var(--secondary-color);
+            /* Set bottom border color to secondary */
+            border-radius: 0;
+            /* Remove border radius */
+            background-color: transparent;
+            padding: 8px;
+            /* Add some padding for aesthetics */
+            width: 100%;
+            /* Make the textarea full width */
+            resize: none;
+            /* Disable resizing */
+            outline: none;
+            /* Remove outline on focus */
+        }
+
+        .comment-textarea:focus,
+        .reply-textarea:focus {
+            border-bottom: 2px solid var(--primary-color);
+            background-color: #F2F2F2;
+            box-shadow: none;
+        }
+
+        .dashed-line {
+            border-top: 2px dashed #81183225;
+            /* Change #ccc to your desired color */
+            margin: 20px 0;
+            /* Space above and below the dashed line */
+        }
+
+        .detail-dashed-line {
+            border-top: 1px dashed #cfcfcf;
+            /* Change #ccc to your desired color */
+            margin: 20px 0;
+            /* Space above and below the dashed line */
+        }
+
+        /* Custom scrollbar for modern browsers */
+        .comment-section::-webkit-scrollbar {
+            width: 8px;
+            /* Width of the scrollbar */
+        }
+
+        .comment-section::-webkit-scrollbar-thumb {
+            background-color: #888;
+            /* Color of the scrollbar thumb */
+            border-radius: 10px;
+            /* Rounded corners for a modern look */
+            border: 2px solid #F2F2F2;
+            /* Space around the thumb */
+        }
+
+        .comment-section::-webkit-scrollbar-thumb:hover {
+            background-color: var(--secondary-color);
+            border-radius: 10px;
+            /* Darker shade on hover */
+        }
+
+        .comment-section::-webkit-scrollbar-track {
+            background-color: #F2F2F2;
+            /* Color of the scrollbar track */
+            border-radius: 10px;
+        }
+
+        /* For Firefox */
+        .comment-section {
+            scrollbar-width: thin;
+            /* Makes scrollbar thinner */
+            scrollbar-color: var(--secondary-color) #eeeeee;
+            /* Thumb and track color */
+        }
+
+        .categroy {
+            background-color: #EFEFF2;
+            color: #1e1e1e;
+            font-weight: bold;
+            border-radius: 100px;
+            padding: 5px 20px;
+            width: max-content;
+            margin-top: 2%;
+            margin-bottom: 1%;
+        }
+
+        .tab-content {
+            padding: 20px;
+            border: 1px solid #dee2e6;
+            border-radius: 0 0 5px 5px;
+            background-color: #fff;
+        }
+
+        .nav-tabs .nav-link {
+            border-radius: 5px 5px 0 0;
+            padding: 15px 60px;
+            margin: 0 5px -16px 0;
+            background-color: #F9F9F9;
+            border-color: #dee2e6;
+            color: #811832;
+            font-weight: 700;
+        }
+
+        .nav-tabs .nav-link.active {
+            border-radius: 5px 5px 0 0;
+            padding: 15px 60px;
+            margin: 0 5px -16px 0;
+            background-color: #811832;
+            border-color: #811832;
+            color: #F9F9F9;
+            font-weight: 700;
+        }
+
+        /* Styles for the course card */
+        .course-link {
+            color: #333;
+            /* Text color */
+            transition: color 0.3s;
+            /* Smooth color transition on hover */
+        }
+
+        .course-link:hover {
+            color: var(--secondary-color);
+            /* Change color on hover */
+        }
+
+        .dashed-separator {
+            border-top: 1px dashed #ccc;
+            /* Dashed line style */
+            margin: 10px 0;
+            /* Margin above and below the dashed line */
+        }
+
+        /* Ensure proper alignment in the list items */
+        .course-item {
+            display: flex;
+            /* Use flexbox for horizontal alignment */
+            align-items: center;
+            /* Center items vertically */
+            padding: 10px 0;
+            /* Add padding for spacing */
+        }
+
+        .course-image {
+            width: 70px !important;
+            /* Set the desired width */
+            height: 70px !important;
+            /* Set the desired height */
+            object-fit: cover;
+            /* Maintain aspect ratio and cover the container */
+        }
+
+        .course-title {
+            font-weight: bold;
+            /* Ensure title is bold */
+            font-size: 16px;
+            /* Adjust font size as needed */
+        }
+
+        .course-description {
+            font-size: 12px;
+            /* Font size for description */
+            color: #666;
+            /* Subtle color for description */
+            margin-top: 5px;
+            /* Space between title and description */
+        }
+
+        .custom-ol {
+            counter-reset: list-counter;
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .custom-ol li {
+            position: relative;
+            padding-left: 40px;
+            margin-bottom: 20px;
+        }
+
+        .custom-ol li::before {
+            content: counter(list-counter);
+            counter-increment: list-counter;
+            position: absolute;
+            left: 0;
+            top: -5px;
+            width: 30px;
+            height: 30px;
+            background-color: var(--secondary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+        }
+
+        /* Custom unordered list with triangle arrow */
+        .custom-ul {
+            list-style: none;
+            padding-left: 30px;
+        }
+
+        .custom-ul li {
+            position: relative;
+            padding-left: 30px;
+            margin-bottom: 8px;
+        }
+
+        .custom-ul li::before {
+            content: "\25B6";
+            /* Unicode for the triangle arrow (▶) */
+            background-color: transparent;
+            position: absolute;
+            left: 0;
+            top: -3px;
+            color: var(--secondary-color);
+            font-size: 18px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-light bg-light">
+        <div class="container-fluid ">
+            <!-- Logo -->
+            <a class="navbar-brand" href="file:///C:/Users/DELL/Desktop/techway/index.html">
+                <img class="logo" src="assets/images/logo.png" alt="Logo">
+            </a>
+            <!-- Author Section (Hidden on small screens) -->
+            <div class="d-none d-md-flex col-md-6 align-items-center justify-content-center my-3 mx-auto">
+                <img class="author-img" src="assets/images/welchway_7.png" alt="author">
+                <div>
+                    <h1 class="header-heading">Building a Winning Career</h1>
+                    <p class="header-sub-heading">
+                        <i class="fas fa-info-circle" style="color: #811832;" title="More Info"></i>
+                        About This Course
+                    </p>
+                </div>
+            </div>
+
+            <!-- Profile Dropdown (Visible on all screen sizes) -->
+            <div class="dropdown ms-auto">
+                <a class="nav-link dropdown-toggle" href="#" id="profileDropdown" role="button"
+                    data-bs-toggle="dropdown" aria-expanded="false">
+                    <img src="assets/images/profile.jpg" alt="Profile" class="profile-img">
+                </a>
+                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profileDropdown">
+                    <li class="user-info">
+                        <img src="assets/images/profile.jpg" alt="Profile" class="profile-img">
+                        <div>
+                            <div class="name">John Doe</div>
+                            <div class="role">Admin</div>
+                        </div>
+                    </li>
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+                    <li><a class="dropdown-item" href="file:///C:/Users/DELL/Desktop/techway/Profile.html"><i class="fas fa-user icon-color"></i> My Profile</a></li>
+                    <li><a class="dropdown-item" href="#"><i class="fas fa-sign-out-alt icon-color"></i> Log Out</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container row mx-auto my-5">
+        <div class="col-lg-8">
+            <div class="video-section">
+                <iframe width="100%" height="400" src="https://www.youtube.com/embed/V-xImJgUlDQ"
+                    title="YouTube video player" frameborder="0" allowfullscreen style="border-radius: 5px;"></iframe>
+            </div>
+            <div class="categroy">Training</div>
+            <h1 class="video-heading">It’s Your Career, What Are You Going to Do with It?</h1>
+            <div class="row align-items-center justify-content-start">
+                <div class="col-lg-1 d-flex justify-content-start">
+                    <img class="profile-img shadow" src="assets/images/profile.jpg" alt="author"
+                        style="width: 60px; height: 60px; border-radius: 50%;border-color: transparent;">
+                </div>
+                <p class="col-lg-10 Author-detail my-3">
+                    <i class="fas fa-user" style="color: #8888885e;"></i> By Welchway |
+                    <i class="fas fa-calendar-alt" style="color: #8888885e; margin: 0 10px;"></i> 01/01/2001 |
+                    <i class="fas fa-eye" style="color: #8888885e; margin: 0 10px;"></i> 100k Views
+                </p>
+            </div>
+            <div class="container mt-3">
+                <div class="row">
+                    <!-- Left Column -->
+                    <div class="col-lg-12 p-0">
+                        <ul class="nav nav-tabs" id="courseTab" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" id="overview-tab" data-toggle="tab" href="#overview"
+                                    role="tab" aria-controls="overview" aria-selected="true">Overview</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="curriculum-tab" data-toggle="tab" href="#Comments" role="tab"
+                                    aria-controls="Comments" aria-selected="false">Comments</a>
+                            </li>
+                            </ul>
+                            <div class="tab-content" id="courseTabContent">
+                                <div class="tab-pane fade" id="overview" role="tabpanel"
+                                    aria-labelledby="overview-tab">
+                                    <h3 class="font-weight-bold">Overview</h3>
+                                    <blockquote class="px-3 py-2"
+                                        style="border-left: 5px solid #811832;background: #81183217;">
+                                        <p>“Loving what you do, having fun at what you do – that’s the ideal. Find that
+                                            intersection. Your AOD – your area of destiny – is where you’re better than
+                                            somebody else… and you love doing it.”</p>
+                                        <footer class="text-end blockquote-footer"><cite><b>Jack Welch</b></cite>
+                                        </footer>
+                                    </blockquote>
+                                    <div class="detail-dashed-line"></div>
+                                    <h4>What It Means</h4>
+                                    <p>Building a winning career is about pursuing a career that is personally and
+                                        professionally fulfilling. This is a highly individual undertaking, and it is
+                                        important to be honest with yourself as you assess your interests and skills and
+                                        begin your journey.</p>
+                                    <p>Remember, you’re the one who is in control of your future. What you achieve is up
+                                        to
+                                        you and how you approach the opportunities, experiences, and challenges that you
+                                        encounter.</p>
+                                    <div class="detail-dashed-line"></div>
+                                    <h4>Why It Matters</h4>
+                                    <ol class="custom-ol">
+                                        <li>Because you spend too much time at work to settle for a job that doesn’t
+                                            fulfill
+                                            you. You deserve more than that – and you can get it if you are willing to
+                                            try.
+                                        </li>
+                                        <li>Because you have to take a proactive approach to building your career. You
+                                            can’t
+                                            count on others to manage it for you.</li>
+                                        <li>Because you need to have a goal in mind. Even though it might evolve and
+                                            change
+                                            as you grow, having something to work toward is a crucial element in
+                                            building a
+                                            winning career.</li>
+                                    </ol>
+                                    <div class="detail-dashed-line"></div>
+                                    <h4>Course Content and Structure</h4>
+                                    <p>This course consists of <strong>10 modular sections</strong>. A final “Test
+                                        Yourself”
+                                        section is also included. From start to finish, the teachings and activities
+                                        have
+                                        been grouped in a way that is easy to navigate and allows fluid movement from
+                                        one
+                                        section to the next. Plus, you can go back and repeat any sections at any time.
+                                    </p>
+
+                                    <p>Each course section is made up of four components:</p>
+                                    <ol class="custom-ol">
+                                        <li><strong>Keynote by Jack Welch</strong> to introduce the section topic.</li>
+                                        <li><strong>Opportunity to review</strong> your present situation and think
+                                            about
+                                            the leadership
+                                            challenges you face at work every day.</li>
+                                        <li><strong>Core content</strong> that dives into proven principles and
+                                            practices
+                                            for great
+                                            leadership presented in an engaging format.</li>
+                                        <li><strong>Playbook</strong> to help you apply what you have learned to your
+                                            job to
+                                            make a direct, visible impact on the success of your business.</li>
+                                    </ol>
+                                    <div class="detail-dashed-line"></div>
+                                    <h4>Course Navigation</h4>
+                                    <h5>The tools to transform your business are just a few clicks away.</h5>
+                                    <p>If this is your first online course, welcome to a new and exciting way to learn.
+                                        You’ll find that you can move through the course at a pace that is right for
+                                        you,
+                                        and you can go back and review a section whenever you want. In fact, you can
+                                        stop
+                                        and start the course at any point you like and it will “remember” where you are
+                                        and
+                                        which parts you have already completed.</p>
+
+                                    <div class="detail-dashed-line"></div>
+                                    <h4>Don’t worry if you’ve never taken an online course before. Here’s all you need
+                                        to
+                                        know:</h4>
+                                    <p><strong>Lectures</strong>
+                                        The lectures are sequential and most course participants will start at Lecture 1
+                                        and
+                                        go through to the end. The time indicators (or page counts) are clearly shown in
+                                        the
+                                        course outline. Each lecture will contain one of four components:</p>
+                                    <ol class="custom-ol">
+                                        <li>Keynote by Jack Welch to introduce the section topic</li>
+                                        <li>Guiding questions to get you thinking about your situation</li>
+                                        <li>Core content</li>
+                                        <li>Playbook</li>
+                                    </ol>
+                                    <div class="detail-dashed-line"></div>
+                                    <h4>About the Playbook</h4>
+                                    <p><strong>A Mission-Critical Component</strong>
+                                        The playbook is one of the most mission-critical components of a Welch Way
+                                        course.
+                                        It is a downloadable, printable document that is yours to keep and use. To
+                                        ensure
+                                        that all Welch Way programs are immediately applicable, we have focused on two
+                                        core
+                                        principles throughout the course:</p>
+
+                                    <p>Laser-focus on the practical You won’t find management “theory” in our courses.
+                                        You
+                                        won’t find complex formulae or convoluted calculations. You will get simple,
+                                        to-the-point, real practices that have been proven to work in many of the
+                                        world’s
+                                        top organizations.</p>
+                                    <p>Learn it today; use it tomorrow The Welch Way Playbook is critical to ensuring
+                                        that
+                                        you can apply what you’ve learned. Each Playbook section is divided into three
+                                        parts:</p>
+                                    <div class="detail-dashed-line"></div>
+                                    <h3>Takeaways</h3>
+                                    <p>Providing a summary of key teachings from that section to remind you of what we
+                                        covered and why it matters.</p>
+
+                                    <h3>Action Plan</h3>
+                                    <p>Built to help you analyze your situation, organize your thoughts, and develop
+                                        concrete action steps to bring about change to help your company win. Each
+                                        Action
+                                        Plan section includes:</p>
+                                    <ol class="custom-ol">
+                                        <li>Starting Point – thinking through your situation</li>
+                                        <li>Quick Wins – simple ideas for fast action that take very little planning
+                                            (and usually no money) to implement.</li>
+                                        <li>Planning tools to support larger initiatives through:</li>
+                                        <ul class="custom-ul">
+                                            <li>Gathering information and pre-event planning</li>
+                                            <li>Event execution</li>
+                                            <li>Post-event follow-up</li>
+                                        </ul>
+                                    </ol>
+
+                                </div>
+                                <div class="tab-pane fade show active full-width" id="Comments" role="tabpanel" aria-labelledby="curriculum-tab">
+                                    <div class="rounded p-3">
+                                        <form id="comment-form">
+                                            <div class="form-group">
+                                                <label for="comment">Add Your Comment:</label>
+                                                <textarea id="comment" class="form-control comment-textarea" rows="1" required></textarea>
+                                            </div>
+                                            <div class="d-flex justify-content-end">
+                                                <button type="submit" class="btn btn-primary comment-submit">Submit</button>
+                                            </div>
+                                        </form>
+                                        <div class="comment-section rounded p-3 shadow" style="height: 72vh; overflow-y: auto; overflow-x: hidden; background-color: #f2f2f22c;">
+                                            <div id="comments-list">
+                                                <h3>Comments:</h3>
+                                                <ul id="comments" class="list-unstyled"></ul>
+                                            </div>
+                                            <div id="load-more-container">
+                                                <button id="load-more" onclick="loadMoreComments()" class="btn btn-primary">Load More Comments</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+        <!-- Sidebar Section -->
+        <div class="col-md-4">
+            <div class="mx-auto shadow  py-3 mb-5 bg-white rounded ps-3 pe-3">
+                <h2 class="fs-2 fw-bold text-center" style="color: var(--secondary-color);">This Course Include</h2>
+                <div class="dashed-line"></div> <!-- Add this line for the dashed line -->
+                <ul class="task-list list-unstyled ps-3 pe-3">
+                    <li><a href="#" class="task-link"><i class="fas fa-play-circle me-2"></i> Overview</a></li>
+                    <li><a href="#" class="task-link"><i class="fas fa-search me-2"></i> Deep Dive</a></li>
+                    <li><a href="#" class="task-link"><i class="fas fa-pencil-alt me-2"></i> Action Plan: Survey</a>
+                    </li>
+                    <li><a href="#" class="task-link"><i class="fas fa-check-circle me-2"></i> Action Plan: Quick
+                            Wins</a></li>
+                    <li><a href="#" class="task-link"><i class="fas fa-map-marked-alt me-2"></i> Action Plan: Find Your
+                            Area of Destiny</a></li>
+                    <li><a href="#" class="task-link"><i class="fas fa-bullseye me-2"></i> Action Plan: Take Control and
+                            Set a Goal</a></li>
+                    <li><a href="#" class="task-link"><i class="fas fa-seedling me-2"></i> Action Plan: Your Growth
+                            Opportunities</a></li>
+                    <li><a href="#" class="task-link"><i class="fas fa-question-circle me-2"></i> Knowledge Check</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="course-card mx-auto shadow py-3 mb-5 bg-white rounded ps-3 pe-3">
+                <h2 class="course-title fs-2 fw-bold text-center" style="color: var(--secondary-color);">Our Latest
+                    Course</h2>
+                <div class="dashed-separator"></div> <!-- Dashed line -->
+                <ul class="course-list list-unstyled ps-3 pe-3">
+                    <li class="course-item d-flex align-items-center mb-2">
+                        <a href="#" class="course-link d-flex align-items-center text-decoration-none">
+                            <img src="assets/images/welchway_1.png" alt="Image of Building a Winning Career course"
+                                class="course-image me-2 rounded">
+                            <span>
+                                <span class="course-title"><b>Creating a Winning Strategy</b></span><br>
+                                <span class="course-description">Lorem ipsum dolor sit, amet consectetur adipisicing
+                                    elit.</span>
+                            </span>
+                        </a>
+                    </li>
+                    <li class="course-item d-flex align-items-center mb-2">
+                        <a href="#" class="course-link d-flex align-items-center text-decoration-none">
+                            <img src="assets/images/welchway_1.png" alt="Image of Building a Winning Career course"
+                                class="course-image me-2 rounded">
+                            <span>
+                                <span class="course-title"><b>Finance of Mananger</b></span><br>
+                                <span class="course-description">Lorem ipsum dolor sit, amet consectetur adipisicing
+                                    elit.</span>
+                            </span>
+                        </a>
+                    </li>
+                    <li class="course-item d-flex align-items-center mb-2">
+                        <a href="#" class="course-link d-flex align-items-center text-decoration-none">
+                            <img src="assets/images/welchway_1.png" alt="Image of Building a Winning Career course"
+                                class="course-image me-2 rounded">
+                            <span>
+                                <span class="course-title"><b>Inovation and Agility</b></span><br>
+                                <span class="course-description">Lorem ipsum dolor sit, amet consectetur adipisicing
+                                    elit.</span>
+                            </span>
+                        </a>
+                    </li>
+                    <li class="course-item d-flex align-items-center mb-2">
+                        <a href="#" class="course-link d-flex align-items-center text-decoration-none">
+                            <img src="assets/images/welchway_1.png" alt="Image of Building a Winning Career course"
+                                class="course-image me-2 rounded">
+                            <span>
+                                <span class="course-title"><b>Leadership in Action</b></span><br>
+                                <span class="course-description">Lorem ipsum dolor sit, amet consectetur adipisicing
+                                    elit.</span>
+                            </span>
+                        </a>
+                    </li>
+                </ul>
+                <p class="text-center font-weight-bold">
+                    <a href="" class="more-courses-link text-decoration-none" style="color: var(--primary-color);">
+                        <i class="fas fa-arrow-right me-1"></i> More Courses
+                    </a>
+                </p>
+            </div>
+
+
+
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <p>Support | Terms of Use | Privacy Policy</p>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        const form = document.getElementById('comment-form');
+        const commentsList = document.getElementById('comments');
+
+        // Sample comments data
+        const commentsData = [
+            {
+                user: { name: 'Alice Johnson', profileImage: 'assets/images/profile.jpg' },
+                text: 'This video is very inspiring! Thank you for sharing.',
+                replies: [
+                    { user: { name: 'Bob Smith', profileImage: 'assets/images/profile2.jpg' }, text: 'I completely agree!' },
+                    { user: { name: 'Charlie Brown', profileImage: 'assets/images/profile1.jpg' }, text: 'Same here! Great insights.' }
+                ]
+            },
+            {
+                user: { name: 'David Wilson', profileImage: 'assets/images/profile2.jpg' },
+                text: 'Looking forward to implementing these strategies in my career.',
+                replies: []
+            },
+            {
+                user: { name: 'Eva Green', profileImage: 'assets/images/profile2.jpg' },
+                text: 'I love the tips provided! Very helpful.',
+                replies: [
+                    { user: { name: 'Frank Castle', profileImage: 'assets/images/profile2.jpg' }, text: 'Couldn\'t have said it better myself!' }
+                ]
+            },
+            {
+                user: { name: 'John Doe', profileImage: 'assets/images/profile1.jpg' },
+                text: 'These insights are game-changing! Thank you.',
+                replies: [
+                    { user: { name: 'Jane Smith', profileImage: 'assets/images/profile1.jpg' }, text: 'Absolutely! Can\'t wait to apply them.' }
+                ]
+            },
+            {
+                user: { name: 'Emily Clark', profileImage: 'assets/images/profile2.jpg' },
+                text: 'This has been very informative. Thanks!',
+                replies: []
+            },
+            {
+                user: { name: 'Michael Scott', profileImage: 'assets/images/profile.jpg' },
+                text: 'I learned a lot from this video. Great work!',
+                replies: [
+                    { user: { name: 'Pam Beesly', profileImage: 'assets/images/profile1.jpg' }, text: 'Me too! Very well explained.' }
+                ]
+            },
+            {
+                user: { name: 'Lisa Taylor', profileImage: 'assets/images/profile.jpg' },
+                text: 'Fantastic content! Can we have more videos like this?',
+                replies: []
+            },
+            {
+                user: { name: 'Robert Brown', profileImage: 'assets/images/profile2.jpg' },
+                text: 'This was incredibly helpful. Thank you!',
+                replies: []
+            },
+            {
+                user: { name: 'Mia Chen', profileImage: 'assets/images/profile1.jpg' },
+                text: 'Loved this video! Very motivational.',
+                replies: [
+                    { user: { name: 'James Lee', profileImage: 'assets/images/profile.jpg' }, text: 'Exactly what I needed to hear.' }
+                ]
+            },
+            {
+                user: { name: 'Sofia Johnson', profileImage: 'assets/images/profile1.jpg' },
+                text: 'Great tips! Can\'t wait to implement them in my own career.',
+                replies: []
+            },
+            {
+                user: { name: 'Chris Evans', profileImage: 'assets/images/profile.jpg' },
+                text: 'Very well put together! Thank you for this content.',
+                replies: []
+            },
+            {
+                user: { name: 'Natalie Portman', profileImage: 'assets/images/profile2.jpg' },
+                text: 'The advice given here is invaluable. Appreciate it!',
+                replies: [
+                    { user: { name: 'Matt Damon', profileImage: 'assets/images/profile1.jpg' }, text: 'Couldn\'t agree more!' }
+                ]
+            },
+            {
+                user: { name: 'Steve Jobs', profileImage: 'assets/images/profile2.jpg' },
+                text: 'Incredible insights! Looking forward to more.',
+                replies: []
+            },
+            {
+                user: { name: 'Anne Hathaway', profileImage: 'assets/images/profile1.jpg' },
+                text: 'This video changed my perspective. Thank you!',
+                replies: []
+            }
+        ];
+
+
+        // Initialize comments from sample data
+        commentsData.forEach(comment => addComment(comment.user, comment.text, comment.replies));
+
+        form.addEventListener('submit', function (e) {
+            e.preventDefault();
+            const commentText = document.getElementById('comment').value;
+            addComment({ name: 'John Doe', profileImage: 'assets/images/profile.jpg' }, commentText, [], true);
+            document.getElementById('comment').value = ''; // Clear the input field
+        });
+
+        function addComment(user, commentText, replies = [], isNew = false) {
+            const timestamp = formatTimestamp(new Date());
+            const li = document.createElement('li');
+            li.innerHTML = `
+    <div class="comment-author">
+        <img src="${user.profileImage}" alt="${user.name}">
+        <div>
+            <b>${user.name}</b> 
+            ${isNew ? '<span class="badge ml-1" style="background-color: red; color: white;">New</span>' : ''}
+            <small class="text-muted">${timestamp}</small>
+            <p>${commentText}</p>
+            <span class="reply" onclick="showReplyField(this)">
+                <i class="fa-solid fa-reply icon-reply"></i> Reply
+            </span>
+            <div class="reply-section" style="display: none;">
+                <div class="reply-header">
+                    <img src="${user.profileImage}" alt="${user.name}">
+                    <textarea class="form-control reply-textarea" rows="1" placeholder="Reply..."></textarea>
+                    <button class="btn btn-primary reply-submit mt-1" onclick="submitReply(event, this)">Reply</button>
+                </div>
+                <ul class="reply-list mt-2" style="display: none;"></ul>
+            </div>
+        </div>
+    </div>
+    `;
+            const replyList = li.querySelector('.reply-list');
+            replies.forEach(reply => {
+                addReply(replyList, reply.user, reply.text);
+            });
+
+            // Add the new comment to the top of the comments list
+            commentsList.prepend(li);
+
+            if (isNew) {
+                // Remove the "new" tag after 2 minutes (120000 milliseconds)
+                setTimeout(() => {
+                    const newTag = li.querySelector('.badge');
+                    if (newTag) {
+                        newTag.remove();
+                    }
+                }, 120000); // 2 minutes
+            }
+        }
+
+        function formatTimestamp(date) {
+            const now = new Date();
+            const timeDifference = now - date; // Difference in milliseconds
+
+            const oneDay = 24 * 60 * 60 * 1000; // 24 hours in milliseconds
+            const isWithin24Hours = timeDifference < oneDay;
+
+            if (isWithin24Hours) {
+                // Format time in 24-hour format (HH:mm)
+                const hours = String(date.getHours()).padStart(2, '0');
+                const minutes = String(date.getMinutes()).padStart(2, '0');
+                return `${hours}:${minutes}`; // Return time if within 24 hours
+            } else {
+                // Return date if older than 24 hours (DD/MM/YYYY)
+                const day = String(date.getDate()).padStart(2, '0');
+                const month = String(date.getMonth() + 1).padStart(2, '0'); // Months are 0-based
+                const year = date.getFullYear();
+                return `${day}/${month}/${year}`; // Return date if older than 24 hours
+            }
+        }
+
+
+        function addReply(replyList, user, replyText) {
+            const timestamp = new Date().toLocaleString();
+            const replyItem = document.createElement('li');
+            replyItem.innerHTML = `
+                <div class="comment-author">
+                    <img src="${user.profileImage}" alt="${user.name}">
+                    <div>
+                        <b>${user.name}</b> <small class="text-muted">${timestamp}</small>
+                        <p>${replyText}</p>
+                    </div>
+                </div>
+            `;
+            replyList.appendChild(replyItem);
+            replyList.style.display = 'block'; // Ensure replies are shown
+        }
+
+        function showReplyField(element) {
+            const replySection = element.closest('div').querySelector('.reply-section');
+            if (replySection.style.display === "block") {
+                replySection.style.display = "none";
+            } else {
+                replySection.style.display = "block";
+                replySection.querySelector('.reply-textarea').focus();
+            }
+        }
+
+        function submitReply(event, button) {
+            event.preventDefault();
+            const replySection = button.closest('.reply-section');
+            const replyTextarea = replySection.querySelector('.reply-textarea');
+            const reply = replyTextarea.value.trim();
+
+            if (reply !== '') {
+                const replyList = replySection.querySelector('.reply-list');
+                const user = { name: 'John Doe', profileImage: 'assets/images/profile.jpg' };
+                addReply(replyList, user, reply);
+                replyTextarea.value = ''; // Clear the textarea
+                replySection.style.display = 'none'; // Optionally hide reply section after submission
+            }
+        }
+
+    </script>
+    <script>
+        let commentsPerPage = 5;  // Number of comments to load initially and each time
+        let currentCommentsIndex = 0;  // Tracks how many comments have been loaded so far
+        const totalComments = commentsData.length;
+
+        // Clear current comment list before rendering
+        function clearCommentsList() {
+            document.getElementById('comments').innerHTML = '';
+        }
+
+        function renderCommentsBatch() {
+            // Clear the current comment list before loading new batch (if needed)
+            if (currentCommentsIndex === 0) {
+                clearCommentsList();  // Clear comments if it's the first time loading
+            }
+
+            // Calculate the end index for this batch
+            const end = Math.min(currentCommentsIndex + commentsPerPage, totalComments);
+
+            // Load comments within the current range
+            const commentsToLoad = commentsData.slice(currentCommentsIndex, end);
+
+            commentsToLoad.forEach(comment => addComment(comment.user, comment.text, comment.replies));
+
+            currentCommentsIndex = end;
+
+            // Hide the "Load More" button if all comments are loaded
+            if (currentCommentsIndex >= totalComments) {
+                document.getElementById('load-more-container').style.display = 'none';
+            }
+        }
+
+        // Initial load of the first batch of comments (5 comments)
+        renderCommentsBatch();
+
+        // Function to load more comments when "Load More" button is clicked
+        function loadMoreComments() {
+            renderCommentsBatch();
+        }
+    </script>
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bootstrap Profile Dropdown with Shadow</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Estelle+Handwriting&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<style>
+    h2 {
+        font-size: 40px;
+        font-weight: 300;
+    }
+
+    .heading {
+        font-weight: 700;
+    }
+
+    .para {
+        font-size: 18px;
+    }
+
+    @media screen and (max-width:800px) {
+        .content-container {
+            padding: 0 1em !important;
+        }
+    }
+</style>
+
+<body>
+    <!-- Navbar Start -->
+    <nav class="navbar navbar-light bg-light">
+        <div class="container-fluid">
+            <!-- Logo -->
+            <a class="navbar-brand" href="file:///C:/Users/DELL/Desktop/techway/index.html">
+                <img class="logo" src="assets/images/Straxecute-Learning-LOGO.png" alt="Logo">
+            </a>
+
+            <!-- Author Section (Hidden on small screens) -->
+            <div class="d-none d-md-flex col-md-6 align-items-center justify-content-center my-3 mx-auto">
+                <img class="author-img" src="assets/images/welchway_7.png" alt="author">
+                <div>
+                    <h1 class="header-heading">Building a Winning Career</h1>
+                    <p class="header-sub-heading" data-bs-toggle="modal" data-bs-target="#aboutCourseModal">
+                        <i class="fas fa-info-circle" style="color: #811832;" title="More Info"></i>
+                        About This Course
+                    </p>
+                </div>
+            </div>
+
+            <!-- Profile Dropdown (Visible on all screen sizes) -->
+            <div class="dropdown ms-auto">
+                <a class="nav-link dropdown-toggle" href="#" id="profileDropdown" role="button"
+                    data-bs-toggle="dropdown" aria-expanded="false">
+                    <img src="assets/images/profile.jpg" alt="Profile" class="profile-img">
+                </a>
+                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profileDropdown">
+                    <li class="user-info">
+                        <img src="assets/images/profile.jpg" alt="Profile" class="profile-img">
+                        <div>
+                            <div class="name">John Doe</div>
+                            <div class="role">Admin</div>
+                        </div>
+                    </li>
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="file:///C:/Users/DELL/Desktop/techway/Profile.html">
+                            <i class="fas fa-user icon-color"></i> My Profile
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="#">
+                            <i class="fas fa-sign-out-alt icon-color"></i> Log Out
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- Navbar End -->
+    <!-- Modal -->
+    <div class="modal fade" id="aboutCourseModal" tabindex="-1" aria-labelledby="aboutCourseModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered"> <!-- Add modal-dialog-centered here -->
+            <div class="modal-content">
+                <div class="modal-body" style="min-height: 20vh;padding-top: 5%;">
+                    <h3>Welcome to Building a Winning Career</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container col-lg-6 mx-auto my-5 px-3">
+        <div class="d-flex align-items-center">
+            <span
+                style="background-color: var(--secondary-color); border-radius: 50%; width: 65px; height: 65px; display: flex; justify-content: center; align-items: center; margin-right: 10px;">
+                <i class="fa fa-play" aria-hidden="true" style="color: #F2F2F2; font-size: 30px;"></i>
+            </span>
+            <h1 class="py-2">Overview</h1>
+        </div>
+    </div>
+
+    <div class="container content-container col-lg-6 px-5">
+        <!-- Main Content -->
+        <blockquote class="px-3 py-4 my-5"
+            style="border-left: 8px solid #811832; background: #F2F2F2; font-size: 22px;">
+            <p>“Loving what you do, having fun at what you do – that’s the ideal. Find that intersection. Your AOD –
+                your area of destiny – is where you’re better than somebody else… and you love doing it.”</p>
+            <footer class="text-end blockquote-footer">
+                <cite><b>Jack Welch</b></cite>
+            </footer>
+        </blockquote>
+
+        <!-- Video Section -->
+        <div class="video-section mb-3">
+            <iframe width="100%" height="450" src="https://www.youtube.com/embed/V-xImJgUlDQ"
+                title="YouTube video player" frameborder="0" allowfullscreen style="border-radius: 5px;"></iframe>
+        </div>
+
+        <!-- Career Guidance Section -->
+        <h2>It’s Your Career, What Are You Going to Do with It?</h2>
+        <blockquote class="px-3 py-4 my-5"
+            style="border-left: 5px solid #811832; background: #F2F2F2; font-size: 22px;">
+            <h3 class="heading">What It Means</h3>
+            <p>Building a winning career is about pursuing a career that is personally and professionally fulfilling.
+                This is a highly individual undertaking, and it is important to be honest with yourself as you assess
+                your interests and skills and begin your journey.</p>
+            <p>Remember, you’re the one who is in control of your future. What you achieve is up to you and how you
+                approach the opportunities, experiences, and challenges that you encounter.</p>
+        </blockquote>
+
+        <!-- Importance of Career Development -->
+        <h2 class="heading">Why It Matters</h2>
+        <ul class="custom-ul my-5">
+            <li>Because you spend too much time at work to settle for a job that doesn’t fulfill you. You deserve more
+                than that – and you can get it if you are willing to try.</li>
+            <li>Because you have to take a proactive approach to building your career. You can’t count on others to
+                manage it for you.</li>
+            <li>Because you need to have a goal in mind. Even though it might evolve and change as you grow, having
+                something to work toward is a crucial element in building a winning career.</li>
+        </ul>
+
+        <!-- Course Content and Structure -->
+        <h2 class="heading">Course Content and Structure</h2>
+        <p class="para">This course consists of 10 modular sections, including a final “Test Yourself” section. The
+            teachings and
+            activities are grouped in a way that allows easy navigation and fluid movement between sections. You can
+            also revisit any section at any time.</p>
+        <p class="para">Each course section includes four components:</p>
+        <ol class="custom-ol my-3">
+            <li><strong>Keynote</strong> by Jack Welch to introduce the section topic.</li>
+            <li><strong>Opportunity to review</strong> your present situation and think about the leadership challenges
+                you face at work every day.</li>
+            <li><strong>Core content</strong> that dives into proven principles and practices for great leadership
+                presented in an engaging format.</li>
+            <li><strong>Playbook</strong> to help you apply what you have learned to your job, making a direct, visible
+                impact on your business's success.</li>
+        </ol>
+
+        <!-- Course Navigation -->
+        <h2 class="heading">Course Navigation</h2>
+        <blockquote class="px-3 py-4 my-5"
+            style="border-left: 5px solid #811832; background: #F2F2F2; font-size: 22px;">
+            <p>The tools to transform your business are just a few clicks away.</p>
+            <p>If this is your first online course, welcome to a new and exciting way to learn. You can move through the
+                course at your own pace and revisit sections whenever you want. The course will remember where you left
+                off.</p>
+        </blockquote>
+
+        <!-- Online Course Guidelines -->
+        <h2 class="heading">Don’t Worry If You’ve Never Taken an Online Course Before. Here’s What You Need to Know:
+        </h2>
+        <h4>Course Lectures</h4>
+        <p class="para">The lectures are sequential, and most participants will start at Lecture 1 and proceed to the
+            end. Time
+            indicators (or page counts) are clearly shown in the course outline. Each lecture includes one of four
+            components:</p>
+        <ol class="custom-ol my-4">
+            <li>Keynote by Jack Welch to introduce the section topic.</li>
+            <li>Questions to get you thinking about your situation.</li>
+            <li>Core content.</li>
+            <li>Playbook.</li>
+        </ol>
+
+        <!-- About the Playbook -->
+        <h2 class="heading">About the Playbook</h2>
+        <blockquote class="px-3 py-4 my-5"
+            style="border-left: 5px solid #811832; background: #F2F2F2; font-size: 22px;">
+            <p>A Mission-Critical Component</p>
+            <p>The playbook is a downloadable, printable document that is yours to keep and use. We focus on two core
+                principles:</p>
+        </blockquote>
+        <p class="para"><strong>Laser-focus on the practical:</strong> You won’t find management “theory” in our
+            courses—just proven
+            practices that work in top organizations.</p>
+        <p class="para"><strong>Learn it today; use it tomorrow:</strong> The Playbook is designed to ensure immediate
+            application of
+            what you’ve learned. Each section includes:</p>
+
+        <h3 class="heading">Takeaways</h3>
+        <p class="para">Providing a summary of key teachings to remind you of what we covered and why it matters.</p>
+
+        <h3 class="heading">Action Plan</h3>
+        <p class="para">Helps you analyze your situation, organize thoughts, and develop concrete action steps:</p>
+        <ol class="custom-ol">
+            <li>Your Starting Point – reflecting on your situation.</li>
+            <li>Quick Wins – simple ideas for fast action with minimal planning.</li>
+            <li>Planning tools for larger initiatives:</li>
+            <ul class="custom-ul">
+                <li>Gathering information and pre-event planning.</li>
+                <li>Event execution.</li>
+                <li>Post-event follow-up.</li>
+            </ul>
+        </ol>
+
+        <h2>Game Pages</h2>
+        <h2 class="para">Your personalized plan that you can take back and use on the job in your specific role.</p>
+
+
+            <div class="container mx-auto my-5">
+                <div class="row align-items-center">
+                    <div class="col-8 col-lg-8">
+                        <div style="border-bottom: 1px solid #1e1e1e4d; width: 100%;"></div>
+                    </div>
+                    <div class="col-4 col-lg-4">
+                        <img src="assets/images/Straxecute-Learning-LOGO.png" alt="Welch Way" class="img-fluid">
+                    </div>
+                </div>
+            </div>
+    </div>
+
+
+
+    <!-- Main Content End -->
+
+      <div class="container-fluid p-0">
+        <!-- Navigation container with flex layout -->
+        <div class="nav-container desk-footer">
+            <!-- Previous button -->
+            <button class="arrow-btn desk-prev" disabled>← Previous</button>
+
+            <!-- Navigation Tabs -->
+            <ul class="nav nav-tabs" id="deskNavTabs">
+                <li class="nav-item">
+                    <a class="nav-link nav-link-footer" href="./Overview2.html" data-step="0">Overview <i
+                            class="fa-solid fa-check checkmark"></i></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link nav-link-footer active" href="./deep dive.html" data-step="1">Deep Dive <i
+                            class="fa-solid fa-check checkmark"></i></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link nav-link-footer" href="./Action Plan Survey.html" data-step="2">Action Plan:
+                        Survey <i class="fa-solid fa-check checkmark"></i></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link nav-link-footer" href="./Action-Plans-Quick-Win.html" data-step="3">Action Plan:
+                        Quick Wins <i class="fa-solid fa-check checkmark"></i></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link nav-link-footer" href="./Action-Plan-fing-your-area-for-destiny.html"
+                        data-step="4">Action Plan: Find Your Area of Destiny <i
+                            class="fa-solid fa-check checkmark"></i></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link nav-link-footer" href="./Action Plan Take Control and Set a Goal.html"
+                        data-step="5">Action Plan: Take Control and Set a Goal <i
+                            class="fa-solid fa-check checkmark"></i></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link nav-link-footer" href="Action Plan Your Growth Opportunities.html"
+                        data-step="6">Action Plan: Your Growth Opportunities <i
+                            class="fa-solid fa-check checkmark"></i></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link nav-link-footer" href="./Knowladge Check.html" data-step="7">Knowledge Check <i
+                            class="fa-solid fa-check checkmark"></i></a>
+                </li>
+            </ul>
+
+            <!-- Next button -->
+            <button class="arrow-btn desk-next">Next →</button>
+        </div>
+
+        <!-- Mobile and Tablet Footer -->
+        <div class="nav-container mob-footer">
+            <!-- Navigation Tabs -->
+            <ul class="nav nav-tabs" id="mobNavTabs">
+                <li class="nav-item">
+                    <a class="nav-link nav-link-footer" href="./Overview2.html" data-step="0">Overview <i
+                            class="fa-solid fa-check checkmark"></i></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link nav-link-footer active" href="./deep dive.html" data-step="1">Deep Dive <i
+                            class="fa-solid fa-check checkmark"></i></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link nav-link-footer" href="./Action Plan Survey.html" data-step="2">Action Plan:
+                        Survey <i class="fa-solid fa-check checkmark"></i></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link nav-link-footer" href="./Action-Plans-Quick-Win.html" data-step="3">Action Plan:
+                        Quick Wins <i class="fa-solid fa-check checkmark"></i></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link nav-link-footer" href="./Action-Plan-fing-your-area-for-destiny.html"
+                        data-step="4">Action Plan: Find Your Area of Destiny <i
+                            class="fa-solid fa-check checkmark"></i></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link nav-link-footer" href="./Action Plan Take Control and Set a Goal.html"
+                        data-step="5">Action Plan: Take Control and Set a Goal <i
+                            class="fa-solid fa-check checkmark"></i></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link nav-link-footer" href="./Action Plan Your Growth Opportunities.html"
+                        data-step="6">Action Plan: Your Growth Opportunities <i
+                            class="fa-solid fa-check checkmark"></i></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link nav-link-footer" href="./Knowladge Check.html" data-step="7">Knowledge Check <i
+                            class="fa-solid fa-check checkmark"></i></a>
+                </li>
+            </ul>
+
+            <!-- Previous button -->
+            <button class="arrow-btn mob-prev" disabled>← Previous</button>
+            <!-- Next button -->
+            <button class="arrow-btn mob-next">Next →</button>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        const tabsDesktop = document.querySelectorAll('#deskNavTabs .nav-link-footer');
+        const tabsMobile = document.querySelectorAll('#mobNavTabs .nav-link-footer');
+        const prevBtnDesktop = document.querySelector('.desk-prev');
+        const nextBtnDesktop = document.querySelector('.desk-next');
+        const prevBtnMobile = document.querySelector('.mob-prev');
+        const nextBtnMobile = document.querySelector('.mob-next');
+
+        let currentStep = 0;
+
+        // Define an array of URLs corresponding to each step
+        const urls = [
+            "./Overview2.html", // Overview
+            "./deep dive.html", // Deep Dive
+            "./Action Plan Survey.html", // Action Plan: Survey
+            "./Action-Plans-Quick-Win.html", // Action Plan: Quick Wins
+            "./Action-Plan-fing-your-area-for-destiny.html", // Action Plan: Find Your Area of Destiny
+            "./Action Plan Take Control and Set a Goal.html", // Action Plan: Take Control and Set a Goal
+            "./Action Plan Your Growth Opportunities.html", // Action Plan: Your Growth Opportunities
+            "./Knowladge Check.html" // Knowledge Check
+        ];
+
+        function updateTabs(tabs, prevBtn, nextBtn) {
+            tabs.forEach((tab, index) => {
+                tab.classList.toggle('active', index === currentStep);
+            });
+            prevBtn.disabled = currentStep === 0;
+            nextBtn.disabled = currentStep === tabs.length - 1;
+        }
+
+// Event listeners for Desktop
+prevBtnDesktop.addEventListener('click', () => {
+    if (currentStep > 0) {
+        currentStep--;
+        window.location.href = urls[currentStep]; // Redirect to the corresponding URL
+        updateTabs(tabsDesktop, prevBtnDesktop, nextBtnDesktop);
+    }
+});
+
+nextBtnDesktop.addEventListener('click', () => {
+    if (currentStep < tabsDesktop.length - 1) {
+        currentStep++;
+        window.location.href = urls[currentStep]; // Redirect to the corresponding URL
+    }
+});
+
+// Event listeners for Mobile
+prevBtnMobile.addEventListener('click', () => {
+    if (currentStep > 0) {
+        currentStep--;
+        window.location.href = urls[currentStep]; // Redirect to the corresponding URL
+        updateTabs(tabsMobile, prevBtnMobile, nextBtnMobile);
+    }
+});
+
+nextBtnMobile.addEventListener('click', () => {
+    if (currentStep < tabsMobile.length - 1) {
+        currentStep++;
+        window.location.href = urls[currentStep]; // Redirect to the corresponding URL
+    }
+});
+
+
+        // Initial state
+        updateTabs(tabsDesktop, prevBtnDesktop, nextBtnDesktop);
+        updateTabs(tabsMobile, prevBtnMobile, nextBtnMobile);
+    </script>
+</body>
+
+</html>
